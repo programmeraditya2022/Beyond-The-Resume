@@ -1,0 +1,290 @@
+@import "tailwindcss";
+
+:root {
+  --app: #f4f7fb;
+  --surface-1: #ffffff;
+  --surface-2: #f1f5f9;
+  --surface-glass: rgba(255, 255, 255, 0.64);
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --border: #cbd5e1;
+  --shadow-card: 0 16px 40px -24px rgba(30, 41, 59, 0.45);
+}
+
+[data-theme='dark'] {
+  --app: #040714;
+  --surface-1: #0c1220;
+  --surface-2: #0f172a;
+  --surface-glass: rgba(15, 23, 42, 0.62);
+  --text-primary: #e2e8f0;
+  --text-secondary: #94a3b8;
+  --border: #1f2a44;
+  --shadow-card: 0 20px 45px -25px rgba(6, 182, 212, 0.35);
+}
+
+@theme inline {
+  --color-app: var(--app);
+  --color-surface-1: var(--surface-1);
+  --color-surface-2: var(--surface-2);
+  --color-surface-glass: var(--surface-glass);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-border: var(--border);
+  --shadow-card: var(--shadow-card);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family:
+    Inter,
+    Poppins,
+    system-ui,
+    -apple-system,
+    Segoe UI,
+    Roboto,
+    sans-serif;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(59, 130, 246, 0.26), transparent 32%),
+    radial-gradient(circle at 84% 28%, rgba(236, 72, 153, 0.24), transparent 34%),
+    radial-gradient(circle at 50% 90%, rgba(139, 92, 246, 0.2), transparent 32%),
+    linear-gradient(120deg, #030712 0%, #040714 50%, #12071e 100%);
+  color: var(--text-primary);
+  transition: background-color 0.4s ease, color 0.35s ease;
+}
+
+.input {
+  width: 100%;
+  border-radius: 0.85rem;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  padding: 0.75rem 0.9rem;
+  color: var(--text-primary);
+  transition: all 0.25s ease;
+}
+
+.input::placeholder {
+  color: var(--text-secondary);
+}
+
+.input:focus {
+  outline: none;
+  border-color: rgb(56 189 248 / 0.7);
+  box-shadow: 0 0 0 4px rgb(34 211 238 / 0.1);
+}
+
+button,
+a,
+input,
+textarea,
+svg,
+div {
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    color 0.25s ease,
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulseDot {
+  0%,
+  100% {
+    transform: scale(0.75);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes shimmer {
+  from {
+    background-position: -200% 0;
+  }
+  to {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(24px, -18px);
+  }
+  50% {
+    transform: translate(-12px, 18px);
+  }
+  75% {
+    transform: translate(18px, 8px);
+  }
+}
+
+.animate-enter {
+  animation: fadeInUp 0.45s ease-out both;
+}
+
+.surface-glow:hover {
+  box-shadow:
+    0 0 0 1px rgb(34 211 238 / 0.22),
+    0 0 22px -8px rgb(168 85 247 / 0.5),
+    var(--shadow-card);
+  transform: translateY(-3px);
+}
+
+.skeleton {
+  border-radius: 0.75rem;
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--surface-2) 95%, #94a3b8 5%) 25%,
+    color-mix(in srgb, var(--surface-2) 70%, #cbd5e1 30%) 37%,
+    color-mix(in srgb, var(--surface-2) 95%, #94a3b8 5%) 63%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.3s linear infinite;
+}
+
+.typing-dot {
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 9999px;
+  background: #22d3ee;
+  animation: pulseDot 0.9s ease-in-out infinite;
+}
+
+@keyframes floatCard {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-6deg);
+  }
+  50% {
+    transform: translateY(-14px) rotate(-4deg);
+  }
+}
+
+.particle {
+  position: absolute;
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, #22d3ee, #f472b6);
+  box-shadow: 0 0 16px rgba(244, 114, 182, 0.7);
+  animation: pulseDot 1.8s ease-in-out infinite;
+}
+
+.glass-panel {
+  border: 1px solid rgb(148 163 184 / 0.18);
+  background: linear-gradient(145deg, rgb(15 23 42 / 0.62), rgb(15 23 42 / 0.35));
+  backdrop-filter: blur(16px);
+}
+
+.neon-outline {
+  box-shadow:
+    0 0 0 1px rgb(192 132 252 / 0.3),
+    0 0 30px -14px rgb(232 121 249 / 0.8);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  border-radius: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.hover-lift {
+  transition: all 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-6px) scale(1.02);
+}
+
+.stat-card-gradient {
+  background: linear-gradient(135deg, #1e293b, #0f172a);
+}
+
+.chart-line-glow {
+  stroke: #22d3ee;
+  filter: drop-shadow(0 0 6px #22d3ee);
+}
+
+.skill-card-strong {
+  background: linear-gradient(
+    145deg,
+    rgb(34 197 94 / 0.2),
+    rgb(52 211 153 / 0.1)
+  );
+  border: 1px solid rgb(52 211 153 / 0.35);
+  box-shadow:
+    0 0 0 1px rgb(16 185 129 / 0.12),
+    0 12px 40px -20px rgb(16 185 129 / 0.45);
+}
+
+.skill-card-moderate {
+  background: linear-gradient(
+    145deg,
+    rgb(245 158 11 / 0.22),
+    rgb(251 191 36 / 0.08)
+  );
+  border: 1px solid rgb(251 191 36 / 0.35);
+  box-shadow:
+    0 0 0 1px rgb(245 158 11 / 0.12),
+    0 12px 40px -20px rgb(245 158 11 / 0.4);
+}
+
+.skill-card-weak {
+  background: linear-gradient(145deg, rgb(239 68 68 / 0.2), rgb(248 113 113 / 0.08));
+  border: 1px solid rgb(248 113 113 / 0.35);
+  box-shadow:
+    0 0 0 1px rgb(239 68 68 / 0.12),
+    0 12px 40px -20px rgb(239 68 68 / 0.45);
+}
+
+.btn-gradient-primary {
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+}
+
+.dashboard-shell {
+  min-height: 100vh;
+  background: linear-gradient(to bottom right, #0b0f1a, #0f172a);
+}
+
+html[data-theme='light'] .dashboard-shell {
+  background: var(--app);
+}

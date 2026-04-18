@@ -1,0 +1,17 @@
+{
+  "name": "beyond-resume-backend",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Minimal backend for resume upload and PDF parsing",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "multer": "^1.4.5-lts.2",
+    "pdf-parse": "^1.1.1"
+  }
+}
